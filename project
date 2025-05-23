@@ -1,0 +1,17 @@
+import psutil
+import time
+import os
+
+def clear_screen():
+    # Clear the terminal screen
+    os.system('cls' if os.name == 'nt' else 'clear')
+
+print("Real-Time CPU Usage Monitor (Press Ctrl+C to stop)\n")
+try:
+    while True:
+        clear_screen()
+        cpu_percent = psutil.cpu_percent(interval=1)
+        print(f"CPU Usage: {cpu_percent}%")
+        time.sleep(1)  # Pause for 1 second
+except KeyboardInterrupt:
+    print("\nMonitoring stopped.")
