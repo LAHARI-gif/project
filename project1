@@ -1,0 +1,23 @@
+import time
+import os
+import psutil
+
+def clear_screen():
+    os.system('cls' if os.name == 'nt' else 'clear')
+
+print("Real-Time Clock + CPU Monitor (Press Ctrl+C to stop)\n")
+
+try:
+    while True:
+        clear_screen()
+
+        current_time = time.strftime('%Y-%m-%d %H:%M:%S')
+        cpu_usage = psutil.cpu_percent(interval=1)
+
+        print(f"🕒 Time:       {current_time}")
+        print(f"⚙️  CPU Usage: {cpu_usage}%")
+
+        time.sleep(1)
+
+except KeyboardInterrupt:
+    print("\nStopped by user.")
